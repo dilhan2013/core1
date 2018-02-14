@@ -6,7 +6,7 @@ services:
     expose:
       - "80"
     ports:
-      - "5101:80"
+      - "59252:80"
     build:
       context: .
       dockerfile: WebApplication1/Dockerfile
