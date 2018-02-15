@@ -36,10 +36,10 @@ services:
       - 8080:8080
     networks:
        - mynetwork
+  
+  volumes:
+    pgdata:
 
- volumes:
-  pgdata:
-
- networks:
-  mynetwork:
-     driver: bridge
+  networks:
+    mynetwork:
+      driver: bridge
