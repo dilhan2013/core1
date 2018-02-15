@@ -10,3 +10,36 @@ services:
     build:
       context: .
       dockerfile: WebApplication1/Dockerfile
+    links:
+      - db
+    depends_on:
+       - "db"
+    networks:
+      - mynetwork
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+       - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: pass123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+       - mynetwork
+
+ volumes:
+  pgdata:
+
+ networks:
+  mynetwork:
+     driver: bridge
