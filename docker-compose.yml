@@ -25,7 +25,8 @@ services:
     environment:
       POSTGRES_PASSWORD: pass123
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - "/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock"
+      - "pgdata:/var/lib/postgresql/data"
     networks:
       - mynetwork
 
@@ -37,9 +38,9 @@ services:
     networks:
        - mynetwork
   
-  volumes:
-    pgdata:
+volumes:
+  pgdata:
 
-  networks:
-    mynetwork:
-      driver: bridge
+networks:
+  mynetwork:
+    driver: bridge
