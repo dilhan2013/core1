@@ -38,9 +38,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task Post([FromBody] string value)
         {
+            var id = (await _context.Blogs.MaxAsync(a => a.BlogId));
             var blog = new Blog
             {
-                BlogId = 100,
+                BlogId = ++id,
                 Url = "www.test.com.au",
                 Rating = 5
             };
