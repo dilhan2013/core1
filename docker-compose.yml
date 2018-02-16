@@ -45,8 +45,7 @@ services:
       - minio1-data:/data
     ports:
       - "9001:9000"
-    networks:
-      - mynetwork
+
     environment:
       MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLEZZ
       MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
