@@ -24,8 +24,7 @@ services:
        - 5432:5432
     environment:
       POSTGRES_PASSWORD: pass123
-      POSTGRES_USER: sa
-      POSTGRES_DB: 'test'
+      POSTGRES_USER: postgres
     volumes:
       - "/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock"
       - "pgdata:/var/lib/postgresql/data"

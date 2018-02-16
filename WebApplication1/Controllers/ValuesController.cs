@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.EF;
 
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly BloggingContext _context;
+
+        public ValuesController(BloggingContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Blog>> Get()
         {
-            return new string[] { "value1", "value2", "value3", "value4" };
+
+            return await _context.Blogs.ToListAsync();
+
         }
 
         // GET api/values/5
@@ -25,8 +36,17 @@ namespace WebApplication1.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task Post([FromBody] string value)
         {
+            var blog = new Blog
+            {
+                BlogId = 100,
+                Url = "www.test.com.au",
+                Rating = 5
+            };
+
+            _context.Blogs.Add(blog);
+            await _context.SaveChangesAsync();
         }
 
         // PUT api/values/5
