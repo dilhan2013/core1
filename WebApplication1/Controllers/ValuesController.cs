@@ -42,7 +42,7 @@ namespace WebApplication1.Controllers
             var blog = new Blog
             {
                 BlogId = ++id,
-                Url = "www.test.com.au",
+                Url = "www.test.com.au " + Guid.NewGuid().ToString(),
                 Rating = 5
             };
 
