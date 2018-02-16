@@ -45,7 +45,8 @@ services:
       - minio1-data:/data
     ports:
       - "9001:9000"
-
+    networks:
+      - minio_distributed
     environment:
       MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLEZZ
       MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -63,3 +64,5 @@ volumes:
 networks:
   mynetwork:
     driver: bridge
+  minio_distributed:
+    driver: overlay
