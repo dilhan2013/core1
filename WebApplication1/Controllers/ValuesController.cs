@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("minio")]
         public async Task<List<string>> TestMinio()
         {
             var minio = new MinioClient("minio1:9000",
