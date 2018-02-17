@@ -21,6 +21,14 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
+        [HttpGet("MigrateDb")]
+        public string MigrateDb()
+        {
+            _context.Database.Migrate();
+
+            return $"{_context.Database.ProviderName} applied";
+        }
+
         [HttpGet("minio")]
         public async Task<List<string>> TestMinio()
         {
