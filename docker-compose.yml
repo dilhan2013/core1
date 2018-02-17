@@ -57,7 +57,7 @@ services:
         window: 60s
     command: server http://minio1/data
 
-visualizer:
+  visualizer:
     image: dockersamples/visualizer:stable
     ports:
       - "8080:8080"
