@@ -32,40 +32,47 @@ namespace WebApplication1.Controllers
         [HttpGet("minio")]
         public async Task<List<string>> TestMinio()
         {
-            var minio = new MinioClient("http://127.0.0.1:9000",
-                "W9J5XIE4M3T0YVSR52V7",
-                "xmrPyNhU2VolKQTrxYAKk+te4peBJZzSW1M7WxjU"
-            );
-
             try
             {
-                // Create bucket if it doesn't exist.
-                bool found = await minio.BucketExistsAsync("mybucket");
-                if (found)
+                var minio = new MinioClient("http://127.0.0.1:9000",
+                    "W9J5XIE4M3T0YVSR52V7",
+                    "xmrPyNhU2VolKQTrxYAKk+te4peBJZzSW1M7WxjU"
+                );
+
+                try
                 {
-                    Console.Out.WriteLine("mybucket already exists");
+                    // Create bucket if it doesn't exist.
+                    bool found = await minio.BucketExistsAsync("mybucket");
+                    if (found)
+                    {
+                        Console.Out.WriteLine("mybucket already exists");
+                    }
+                    else
+                    {
+                        // Create bucket 'my-bucketname'.
+                        await minio.MakeBucketAsync("mybucket");
+                        Console.Out.WriteLine("mybucket is created successfully");
+                    }
                 }
-                else
+                catch (MinioException e)
                 {
-                    // Create bucket 'my-bucketname'.
-                    await minio.MakeBucketAsync("mybucket");
-                    Console.Out.WriteLine("mybucket is created successfully");
+                    Console.Out.WriteLine("Error occurred: " + e);
                 }
+
+                var getListBucketsTask = minio.ListBucketsAsync();
+                var list = new List<string>();
+
+                foreach (Bucket bucket in getListBucketsTask.Result.Buckets)
+                {
+                    list.Add(bucket.Name + " " + bucket.CreationDate);
+                }
+
+                return list;
             }
-            catch (MinioException e)
+            catch (Exception e1)
             {
-                Console.Out.WriteLine("Error occurred: " + e);
+                return  new List<string>(){ e1.Message + "<br>" + e1.StackTrace };
             }
-
-            var getListBucketsTask = minio.ListBucketsAsync();
-            var list = new List<string>();
-
-            foreach (Bucket bucket in getListBucketsTask.Result.Buckets)
-            {
-                list.Add(bucket.Name + " " + bucket.CreationDate);
-            }
-
-            return list;
         }
 
         // GET api/values
