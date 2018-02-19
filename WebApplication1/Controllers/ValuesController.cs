@@ -32,9 +32,9 @@ namespace WebApplication1.Controllers
         [HttpGet("minio")]
         public async Task<List<string>> TestMinio()
         {
-            var minio = new MinioClient("minio1:9000",
-                "AKIAIOSFODNN7EXAMPLEZZ",
-                "zwJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+            var minio = new MinioClient("http://127.0.0.1:9000",
+                "W9J5XIE4M3T0YVSR52V7",
+                "xmrPyNhU2VolKQTrxYAKk+te4peBJZzSW1M7WxjU"
             );
 
             try
