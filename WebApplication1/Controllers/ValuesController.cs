@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                var minio = new MinioClient("http://127.0.0.1:9000",
+                var minio = new MinioClient("http://52.187.28.154:9001",
                     "W9J5XIE4M3T0YVSR52V7",
                     "xmrPyNhU2VolKQTrxYAKk+te4peBJZzSW1M7WxjU"
                 );
