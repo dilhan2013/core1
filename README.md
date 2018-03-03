@@ -18,3 +18,8 @@ By default, apps deployed with stacks do not have ports publicly exposed. Update
 
 ### Run as root
 `sudo -s`
+
+
+#Azure Plugin
+
+https://docs.docker.com/docker-for-azure/#docker-community-edition-ce-for-azure
