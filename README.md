@@ -23,3 +23,8 @@ By default, apps deployed with stacks do not have ports publicly exposed. Update
 #Azure Plugin
 
 https://docs.docker.com/docker-for-azure/#docker-community-edition-ce-for-azure
+
+
+#Backup
+You can backup the docker volumnes using following method
+https://github.com/dinkel/docker-backup
