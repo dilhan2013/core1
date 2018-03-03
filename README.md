@@ -11,3 +11,10 @@ To deploy complex multi-container apps, you can use the docker stack deploy comm
 By default, apps deployed with stacks do not have ports publicly exposed. Update port mappings for services, and Docker automatically wires up the underlying platform load balancers:
 
 `docker service update --publish-add published=80,target=80 <example-service>`
+
+
+
+## Linux Commands
+
+### Run as root
+`sudo -s`
