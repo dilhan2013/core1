@@ -21,6 +21,7 @@ By default, apps deployed with stacks do not have ports publicly exposed. Update
 
 ### Copy file from local to remote
 `scp myfile.txt remoteuser@192.168.1.10:/remote/folder/`
+Read more at [https://www.simplified.guide/ssh/copy-file]
 
 #Azure Plugin
 
