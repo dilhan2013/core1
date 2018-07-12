@@ -23,6 +23,9 @@ By default, apps deployed with stacks do not have ports publicly exposed. Update
 `scp myfile.txt remoteuser@192.168.1.10:/remote/folder/`
 Read more at [https://www.simplified.guide/ssh/copy-file]
 
+Or use FileZilla
+[https://help.one.com/hc/en-us/articles/115005585709-How-do-I-connect-to-an-SFTP-server-with-FileZilla-]
+
 #Azure Plugin
 
 https://docs.docker.com/docker-for-azure/#docker-community-edition-ce-for-azure
